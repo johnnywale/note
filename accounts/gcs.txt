@@ -1,0 +1,129 @@
+copy (select * from dashur_100.transaction_feed limit 1000) TO STDOUT  WITH DELIMITER ',' CSV HEADER FORCE QUOTE id, company_id, transaction_time, account_id, item_id, vendor_id, application_id, session, ext_ref, type, category,balance_type, round_id, round_ext_ref, patch, patch_updated,company_ids, data;
+
+kubectl --namespace dashur exec bash-0 -- bash -c "/opt/kafka/bin/kafka-consumer-groups.sh  --bootstrap-server kafka-kafka-external-bootstrap.dashur:9094  --describe --group connect-tx-alloydb-processor  --group connect-cassandra-processor_scylla"
+
+SET search_path TO dashur_100;
+
+kubectl --namespace dashur run alloydb --image=johnnywalee/alloydb:0.0.12 --restart=Never --command -- /bin/bash -c "sleep infinity"
+kubectl --namespace dashur cp output.csv alloydb:/tmp
+kubectl --namespace dashur exec -it alloydb bash
+ ./csv --input /tmp/output.csv --topic TRANSACTION_EXPORT_PROTO --brokers kafka-kafka-external-bootstrap.dashur:9094 > output1.log 2>&1 &
+ ./csv --input /tmp/output.csv --topic TRANSACTION_EXPORT_PROTO --brokers kafka-kafka-external-bootstrap.dashur:9094 > output2.log 2>&1 &
+
+/opt/kafka/bin/kafka-consumer-groups.sh  --bootstrap-server kafka-kafka-external-bootstrap.dashur:9094  --describe --group connect-tx-alloydb-processor  --group connect-cassandra-processor_scylla
+
+
+
+psql -h adb-1-prim.das-cld-dev.gcp.dashur.io -d postgres -U adb-admin   -c "copy (select * from dashur_100.transaction_feed limit 1000) TO STDOUT  WITH DELIMITER ',' CSV HEADER FORCE QUOTE id, company_id, transaction_time, account_id, item_id, vendor_id, application_id, session, ext_ref, type, category,balance_type, round_id, round_ext_ref, patch, patch_updated,company_ids, data;" -t -A -F"," -o output.csv
+
+
+gcloud compute ssh asv-cld-stg-man01 --zone europe-west3-a --project asv-cld-host-stg
+
+
+
+gcloud compute ssh das-cld-stg-man01 --zone asia-northeast1-a --project das-cld-host-stg
+
+gcloud compute ssh voltdb-0 --project das-cld-data-stg
+
+gcloud compute ssh das-cld-dev-man01 --zone asia-southeast1-a --project das-cld-host-dev
+
+ssh voltdb-0
+ psql -h postgres-client.dashur -U appuser -d dashur
+ READONLY_DATABASE_URL=postgres://asvla:861Klk6E3XEjb2fS@	:5432/asvladb-read?pgbouncer=true
+
+
+postgres://asvla:861Klk6E3XEjb2fS@psql-db1.asv-cld-stg.gcp.activeinfra.net:5432/asvladb
+
+psql -h psql-db1.asv-cld-stg.gcp.activeinfra.net  -U asvla -d asvlad
+psql -h postgres-client.dashur -U stream -d stream  wdb4mpm-pju4CYB*nbc
+
+
+861Klk6E3XEjb2fS
+
+
+wdb4mpm-pju4CYB*nbc
+SET search_path TO dashur_100;
+zXgAqGmAwTpf
+jdbc:postgresql://postgres-client.dashur:5432/dashur
+ select * from site_service.site;
+
+SELECT id, COUNT(*) as duplicate_count
+FROM your_project_id.your_dataset_id.account
+GROUP BY id
+HAVING COUNT(*) > 1;
+
+
+gcloud auth print-access-token | podman login -u oauth2accesstoken --password-stdin asia-northeast1-docker.pkg.dev/aops-infra/dashur-asia
+
+
+
+gcloud compute ssh asv-cld-prd-man01 --zone europe-west3-a --project asv-cld-host-prd
+
+stream  psql -h asv-db-pooler01.asv-cld-prd.gcp.activeinfra.net -U stream  3*nTycE4pDNsCBfF
+
+
+psql -h 10.86.144.9 -d asvladb -U asvla
+
+gcloud container clusters get-credentials --project asv-cld-apps-stg --region europe-west3  --internal-ip apps-stg-gke01
+gcloud container clusters get-credentials --project asv-cld-data-stg --region europe-west3  --internal-ip data-stg-gke01
+
+
+gcloud container clusters get-credentials --project das-cld-apps-dev  --region asia-southeast1-a --internal-ip  apps-dev-gke01
+
+psql -h adb-1-prim.asv-cld-stg.gcp.activeinfra.net -d postgres -U adb-admin
+
+fn9vma/z@r'16PfX
+
+psql -h adb-1-prim.das-cld-dev.gcp.dashur.io -d postgres -U adb-admin
+
+@k<7h2RD>rl'/xaL
+
+
+
+echo "host=adb-1-prim.das-cld-dev.gcp.dashur.io user=postgres password=}$&\`^_GLABOpc'f\\" 
+
+./alloydb -d 999999 -p 20 -s "host=adb-1-prim.das-cld-dev.gcp.dashur.io user=adb-admin  dbname=postgres password=@k<7h2RD>rl'/xaL" -t 2024-03-01 -a dashur_100 -c 100M > 2024-03-01-output.log 2>&1 &
+
+
+./alloydb -d 999999 -p 20 -s "host=adb-1-prim.das-cld-dev.gcp.dashur.io user=adb-admin  dbname=postgres password=@k<7h2RD>rl'/xaL" -t 2024-03-02 -a dashur_100 -c 100M > 2024-03-02-output.log 2>&1 &
+
+ exec AccountExportPartitioned  0, 1, 10000000000;
+ exec AccountExportPartitioned  1, 1, 10000000000;
+ exec AccountExportPartitioned  2, 1, 10000000000;
+ exec AccountExportPartitioned  5, 1, 10000000000;
+ exec AccountExportPartitioned  7, 1, 10000000000;
+ exec AccountExportPartitioned  10, 1, 10000000000;
+ exec AccountExportPartitioned  11, 1, 10000000000;
+ exec AccountExportPartitioned  12, 1, 10000000000;
+ exec AccountExportPartitioned  13, 1, 10000000000;
+ exec AccountExportPartitioned  15, 1, 10000000000;
+ exec AccountExportPartitioned  19, 1, 10000000000;
+ exec AccountExportPartitioned  21, 1, 10000000000;
+ exec AccountExportPartitioned  25, 1, 10000000000;
+ exec AccountExportPartitioned  26, 1, 10000000000;
+ exec AccountExportPartitioned  33, 1, 10000000000;
+
+
+kubectl cp --namespace dashur dashur.processor-alloydb-migration.config.yml alloydb-migration-processor-7dd468c588-ss6wx:/tmp/conf
+
+export SPRING_CONFIG_LOCATION=/tmp/conf/dashur-2.config.yaml,/tmp/conf/dashur.processor-alloydb-migration.config.yml
+java -cp /app/classes:/app/libs/* com.dashur.processor.MigrationApp
+
+
+
+select partman.run_maintenance(
+      p_parent_table => 'dashur_100.transaction_feed'
+);
+select partman.run_maintenance(
+      p_parent_table => 'dashur_100.transaction_round'
+);
+select partman.run_maintenance(
+      p_parent_table => 'dashur_100.login_context'
+);
+
+select partman.run_maintenance(
+      p_parent_table => 'dashur_100.ext_wallet_command'
+);
+select partman.run_maintenance(
+      p_parent_table => 'dashur_100.audit'
+);

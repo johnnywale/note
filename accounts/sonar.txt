@@ -1,0 +1,39 @@
+docker run --rm -e SONAR_HOST_URL="https://sonar.hats.stack.gov.sg/sonar" -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=ndi-common-prod-sre-app-service-health" -e SONAR_LOGIN="myAuthenticationToken"  -v "./:/usr/src" sonarsource/sonar-scanner-cli:4.7
+
+we can begin to define the error code in system and define a stanrdard logging api in our application
+
+
+echo "sonar.scm.disabled=true" > sonar-project.properties
+
+
+let playerId = await this.getPlayerId(campaign.playerId)
+
+
+
+
+sqp_0c14afacfc08f013d7c1a192c41d81429624fb01
+
+
+
+sonar.projectKey=abcd
+
+
+
+css:S4655
+
+docker pull sonarsource/sonar-scanner-cli:4.7
+
+
+https://sonar1.hats.stack.gov.sg/sonar/projects/favorite
+
+sonarsource/sonarqube-scan:1.0.0
+
+
+docker run --rm -e SONAR_HOST_URL="http://172.19.32.1:9000" -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=abcd" -e SONAR_LOGIN="sqp_0c14afacfc08f013d7c1a192c41d81429624fb01"  -v C:\git\bitbucket\service-health-app:/usr/src sonarsource/sonar-scanner-cli:4.7
+
+
+
+SONAR_HOST_URL: ${SONAR_HOST_URL} # Get the value from the repository/workspace variable.
+SONAR_TOKEN: ${SONAR_TOKEN} # Get the value from the repository/workspace variable. You shouldn't set secret in clear text here.
+
+
